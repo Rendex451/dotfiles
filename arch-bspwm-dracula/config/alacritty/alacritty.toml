@@ -1,0 +1,13 @@
+[general]
+import = [
+    "~/.config/alacritty/themes/alacritty.toml"
+]
+
+[window]
+decorations = "Buttonless"
+opacity = 0.92
+blur = true
+
+[font]
+normal.family = "JetBrainsMono Nerd Font"
+size = 8.0

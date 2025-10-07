@@ -1,0 +1,60 @@
+{
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      },
+      "gopls": {
+        "semanticTokens": true
+      }
+    },
+    "python": {
+      "command": "pylsp",
+      "rootPatterns": ["pyproject.toml", "setup.py", ".git/"],
+      "filetypes": ["python"],
+      "settings": {
+        "pylsp": {
+          "plugins": {
+                "pyflakes": { "enabled": true },
+                "pycodestyle": { "enabled": true },
+                "pylint": { "enabled": true },
+                "flake8": { "enabled": true },
+                "mypy": { "enabled": true }
+            }
+          }
+        }
+    },
+	"clangd": {
+	  "command": "clangd",
+	  "args": [
+	    "--background-index",
+	    "--clang-tidy",
+	    "--completion-style=detailed",
+	    "--header-insertion=never",
+        // "--function-arg-placeholders=false",
+	    "--all-scopes-completion",
+	    "--cross-file-rename",
+	    "--query-driver=/usr/bin/gcc,/usr/bin/g++,/usr/bin/clang,/usr/bin/clang++",
+	    "--fallback-style=llvm"
+	  ],
+	  "rootPatterns": [
+	    "compile_commands.json",
+	    ".git/",
+	    "Makefile"
+	  ],
+	  "filetypes": ["c", "cc", "cpp", "objc", "objcpp"],
+	  "initializationOptions": {
+	    "fallbackFlags": {
+	      "c": ["-std=c17"],
+          "cc": ["-std=c++17"],
+	      "cpp": ["-std=c++17"],
+	      "objc": ["-std=c17"],
+	      "objcpp": ["-std=c++17"]
+	    }
+	  }
+	}
+  }
+}
