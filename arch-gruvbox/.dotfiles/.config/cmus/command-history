@@ -1,0 +1,15 @@
+q
+add ~/Music/
+clear
+add ~/Music
+clear 
+colorscheme gruvbox-warm
+colorscheme gruvbox
+colorscheme gray-88
+colorscheme green-mono-88
+colorscheme jellybeans
+colorscheme gruvbox-night
+colorscheme gruvbox-alt
+s
+shuffle
+colorscheme Gruvbox-night
