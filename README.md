@@ -12,4 +12,7 @@
 # выполняем из папки dotfiles
 stow -v -t ~ common
 stow -v -t ~ node-<X>
+
+# для удаления имеющихся ссылок
+stow -D -v common
 ```
