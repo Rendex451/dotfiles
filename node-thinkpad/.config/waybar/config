@@ -1,0 +1,94 @@
+[
+  {
+    "output": "eDP-1",
+    "battery": {
+      "format": "{icon} {capacity}%",
+      "format-alt": "{time} {icon}",
+      "format-charging": " {capacity}%",
+      "format-icons": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "states": {
+        "critical": 1,
+        "warning": 30
+      }
+    },
+    "clock": {
+      "format": "{:%d.%m.%Y - %H:%M}",
+      "format-alt": "{:%A, %B %d at %R}"
+    },
+    "custom/weather": {
+      "class": "weather",
+      "exec": "curl -s 'wttr.in/Saint-Petersburg?format=%c%t'",
+      "format": " {} ",
+      "interval": 300
+    },
+    "height": 30,
+    "hyprland/language": {
+      "format-en": "US",
+      "format-ru": "RU",
+      "min-length": 5,
+      "tooltip": false
+    },
+    "hyprland/workspaces": {
+      "all-outputs": false,
+      "disable-scroll": true,
+      "format": "{icon}",
+      "format-icons": {
+        "1": "",
+        "2": "",
+        "3": "",
+        "4": "",
+        "5": "",
+        "6": "",
+        "7": "",
+        "8": "",
+        "9": "",
+        "magic": ""
+      },
+      "persistent-workspaces": {
+        "*": 9
+      },
+      "show-special": true,
+      "special-visible-only": true
+    },
+    "layer": "top",
+    "modules-center": [
+      "hyprland/window"
+    ],
+    "modules-left": [
+      "hyprland/workspaces"
+    ],
+    "modules-right": [
+      "hyprland/language",
+      "custom/weather",
+      "pulseaudio",
+      "battery",
+      "clock",
+      "tray"
+    ],
+    "position": "top",
+    "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-bluetooth": "{icon} {volume}% ",
+      "format-icons": {
+        "car": "",
+        "default": [
+          "",
+          ""
+        ]
+      },
+      "format-muted": "",
+      "on-click": "pavucontrol"
+    },
+    "tray": {
+      "icon-size": 14,
+      "spacing": 1
+    }
+  }
+]
+

@@ -1,0 +1,93 @@
+* {
+  border: none;
+  border-radius: 0px;
+  font-family: "JetBrains Mono";
+  font-weight: bold;
+  font-size: 16px;
+  min-height: 0;
+  color: #f8f8f2; /* Dracula foreground */
+}
+
+window#waybar {
+  background: #282a36; /* Dracula background */
+}
+
+/* Workspace Buttons */
+#workspaces button label{
+  color: inherit;
+  padding: 0 10px;
+}
+#workspaces button.active label {
+  color: #282a36; /* Dracula background */
+}
+
+#workspaces button:hover {
+  background: #44475a; /* Dracula selection */
+}
+
+#workspaces button.active {
+  background: #ff5555; /* Dracula pink */
+}
+
+#clock, #battery, #pulseaudio, #tray, #language, #weather {
+  padding: 0 10px;
+  margin: 0 10px;
+}
+
+#language {
+  margin: 0;
+  color: #8be9fd; /* Dracula cyan */
+  border-bottom: 5px solid #8be9fd;
+}
+
+#custom-weather {
+  margin: 0;
+  color: #50fa7b; /* Dracula green */
+  border-bottom: 5px solid #50fa7b;
+}
+
+#pulseaudio {
+  margin: 0;
+  color: #bd93f9; /* Dracula purple */
+  border-bottom: 5px solid #bd93f9;
+}
+
+#pulseaudio.muted {
+  padding: 0 20px;
+  color: #ff5555; /* Dracula red */
+  border-bottom: 5px solid #ff5555;
+}
+
+#battery {
+  margin: 0;
+  color: #ffb86c; /* Dracula orange */
+  border-bottom: 5px solid #ffb86c;
+}
+
+#clock {
+  margin: 0;
+  color: #ff79c6; /* Dracula pink */
+  border-bottom: 5px solid #ff79c6;
+}
+
+#tray {
+  margin: 0;
+  color: #f1fa8c; /* Dracula yellow */
+  border-bottom: 5px solid #f1fa8c;
+}
+
+/* Additional battery states for Dracula */
+#battery.charging {
+  color: #50fa7b; /* Dracula green */
+  border-bottom: 5px solid #50fa7b;
+}
+
+#battery.warning:not(.charging) {
+  color: #ffb86c; /* Dracula orange */
+  border-bottom: 5px solid #ffb86c;
+}
+
+#battery.critical:not(.charging) {
+  color: #ff5555; /* Dracula red */
+  border-bottom: 5px solid #ff5555;
+}
