@@ -1,0 +1,117 @@
+* {
+    border: none;
+    border-radius: 0px;
+    font-family: "JetBrains Mono", "Inter", "Arial";
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Основное окно Waybar — делаем его "плавающим" */
+window#waybar {
+    background: rgba(0, 0, 0, 0.9); /* Черный с прозрачностью */
+    color: #ffffff;
+    /* Скругляем края всей панели */
+    border-radius: 20px;
+    /* Добавляем отступы, чтобы панель не прилипала к краям экрана */
+    margin: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Тонкий контур */
+}
+
+/* Контейнер воркспейсов */
+#workspaces {
+    background: #1a1a1a; /* Темно-серый фон подложки */
+    margin: 5px;
+    padding: 0px;
+    border-radius: 15px; /* Скругление подложки */
+    border: 1px solid #262626;
+}
+
+/* Кнопки воркспейсов */
+#workspaces button {
+    padding: 0 15px;
+    color: #666666;
+    transition: all 0.15s cubic-bezier(0.05, 0.7, 0.1, 1);
+    border-radius: 15px;
+}
+
+/* ТОТ САМЫЙ КРАСНЫЙ ПОЛЗУНОК */
+#workspaces button.active {
+    background: #ff2d2d; /* Фирменный красный Nothing */
+    color: #000000; /* Черный текст на красном фоне для контраста */
+    border-radius: 12px;
+    min-width: 40px; /* Делаем активный воркспейс чуть шире */
+    margin: 2px; /* Небольшой отступ внутри подложки */
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+#workspaces button.urgent {
+    color: #ff2d2d;
+}
+
+/* Модули справа и слева */
+#clock,
+#battery,
+#pulseaudio,
+#tray,
+#language {
+    padding: 0 15px;
+    margin: 5px 2px;
+    background: #1a1a1a; /* Отдельные блоки для модулей */
+    border-radius: 15px;
+    border: 1px solid #262626;
+}
+
+/* Особый акцент на часах */
+#clock {
+    color: #ffffff;
+    background: transparent;
+    border: none;
+    font-size: 15px;
+}
+
+/* Иконка батареи при низком заряде */
+#battery.critical:not(.charging) {
+    background-color: #ff2d2d;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#custom-weather {
+    padding: 0 15px;
+    margin: 5px 2px;
+    background: #1a1a1a; /* Темная подложка */
+    border-radius: 15px; /* Скругление (овал) */
+    border: 1px solid #262626; /* Контур */
+    color: #ffffff;
+}
+
+@keyframes blink {
+    to {
+        background-color: #000000;
+        color: #ff2d2d;
+    }
+}
+
+/* Убираем фон у трея, чтобы не выбивался */
+#tray {
+    background: transparent;
+    border: none;
+}
+
+/* Тултипы */
+tooltip {
+    background: #000000;
+    border-radius: 10px;
+    border: 1px solid #ff2d2d;
+}
+tooltip label {
+    color: #ffffff;
+}

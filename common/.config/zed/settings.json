@@ -7,6 +7,16 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "cli_default_open_behavior": "existing_window",
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
   "languages": {
     "Kotlin": {
       "show_edit_predictions": true
@@ -24,6 +34,7 @@
     }
   },
   "agent": {
+    "dock": "right",
     "default_profile": "ask",
     "default_model": {
       "provider": "ollama",
@@ -35,9 +46,10 @@
   },
   "icon_theme": "Material Icon Theme",
   "git_panel": {
+    "dock": "left",
     "tree_view": true
   },
   "ui_font_size": 16,
   "buffer_font_size": 15,
-  "theme": "Catppuccin Mocha - No Italics"
+  "theme": "Carbonfox - opaque"
 }
