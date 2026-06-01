@@ -1,4 +1,4 @@
-** {
+* {
 	background-image: none;
 	box-shadow: none;
 }
@@ -8,26 +8,21 @@ window {
 }
 
 button {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 15%;
-    background-color: rgba(255, 255, 255, 0.2);
-    margin: 5px;
-    animation: gradient_f 10s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
-    border-radius: 80px;
-    border: 30px;
-    outline-style: none;
+    border-radius: 0;
+    border-color: black;
+	text-decoration-color: #FFFFFF;
+    color: #FFFFFF;
+	background-color: #1E1E1E;
+	border-style: solid;
+	border-width: 1px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 25%;
 }
 
-button:hover, button:focus {
-    background-color: rgba(255, 86, 86, 1.0); /* Красный фон при наведении или выборе */
-    color: @color13;
-    background-size: 25%;
-    margin: 15px;
-    border-radius: 80px;
-    outline-style: none;
-    box-shadow: 0 8px 32px 0 rgba(255, 86, 86, 0.8); /* Красное свечение */
+button:focus, button:active, button:hover {
+	background-color: #FF5656;
+	outline-style: none;
 }
 
 #lock {

@@ -1,6 +1,6 @@
 [general]
 import = [
-    "~/.config/alacritty/themes/alacritty.toml"
+    "~/.config/alacritty/themes/carbonfox.toml"
 ]
 
 [window]
