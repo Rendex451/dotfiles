@@ -3,4 +3,98 @@
 
 //@theme "/usr/share/rofi/themes/dracula.rasi"
 
-@theme "/usr/share/rofi/themes/fullscreen-preview.rasi"
+// @theme "/usr/share/rofi/themes/fullscreen-preview.rasi"
+
+configuration {
+    modi: "drun,run";
+    show-icons: true;
+    icon-theme: "Papirus"; /* Можно заменить на ваш пакет иконок */
+    terminal: "kitty";     /* Укажите ваш терминал */
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "   ";
+}
+
+* {
+    /* Шрифт совпадает с вашей панелью Waybar */
+    font: "JetBrainsMono Nerd Font 11";
+    
+    /* Цветовая палитра под стиль Nothing OS */
+    bg: #000000e6;          /* Черный полупрозрачный (как у Waybar) */
+    bg-alt: #1a1a1a;      /* Темно-серый для полей ввода */
+    border-col: #262626;   /* Тонкие рамки */
+    fg: #ffffff;          /* Белый текст */
+    fg-alt: #666666;      /* Серый текст для неактивных элементов */
+    accent: #ff2d2d;      /* Фирменный красный */
+}
+
+window {
+    width: 500px;
+    background-color: @bg;
+    border: 1px;
+    border-color: @border-col;
+    border-radius: 20px;   /* Закругление окон, как у панели */
+    padding: 20px;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    background-color: @bg-alt;
+    border: 1px;
+    border-color: @border-col;
+    border-radius: 12px;
+    padding: 10px;
+    margin: 0px 0px 15px 0px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @accent;
+    padding: 0px 10px 0px 5px;
+}
+
+entry {
+    background-color: transparent;
+    text-color: @fg;
+    placeholder: "Search applications...";
+    placeholder-color: @fg-alt;
+}
+
+listview {
+    background-color: transparent;
+    columns: 1;
+    lines: 6;
+    spacing: 6px;
+}
+
+element {
+    background-color: transparent;
+    text-color: @fg;
+    border-radius: 12px;
+    padding: 8px 12px;
+}
+
+element-icon {
+    size: 24px;
+    background-color: transparent;
+    margin: 0px 10px 0px 0px;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+/* Активный выбранный элемент — красный фон, черный текст */
+element selected {
+    background-color: @accent;
+    text-color: #000000;
+}
