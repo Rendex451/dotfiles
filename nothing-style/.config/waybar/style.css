@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0px;
-    font-family: "JetBrains Mono", "Inter", "Arial";
+    font-family: "JetBrainsMono Nerd Font", "Inter", "Arial";
     font-weight: bold;
     font-size: 14px;
 }
@@ -115,3 +115,5 @@ tooltip {
 tooltip label {
     color: #ffffff;
 }
+
+
