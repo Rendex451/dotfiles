@@ -1,9 +1,4 @@
-
-//@theme "/usr/share/rofi/themes/gruvbox-dark-hard.rasi"
-
-//@theme "/usr/share/rofi/themes/dracula.rasi"
-
-// @theme "/usr/share/rofi/themes/fullscreen-preview.rasi"
+/* ~/dotfiles/common/.config/rofi/config.rasi */
 
 configuration {
     modi: "drun,run";
@@ -17,17 +12,12 @@ configuration {
     display-drun: "   ";
 }
 
+/* Импортируем динамический файл цветов */
+@import "colors.rasi"
+
 * {
     /* Шрифт совпадает с вашей панелью Waybar */
     font: "JetBrainsMono Nerd Font 11";
-    
-    /* Цветовая палитра под стиль Nothing OS */
-    bg: #000000e6;          /* Черный полупрозрачный (как у Waybar) */
-    bg-alt: #1a1a1a;      /* Темно-серый для полей ввода */
-    border-col: #262626;   /* Тонкие рамки */
-    fg: #ffffff;          /* Белый текст */
-    fg-alt: #666666;      /* Серый текст для неактивных элементов */
-    accent: #ff2d2d;      /* Фирменный красный */
 }
 
 window {
@@ -93,8 +83,8 @@ element-text {
     vertical-align: 0.5;
 }
 
-/* Активный выбранный элемент — красный фон, черный текст */
+/* Активный выбранный элемент */
 element selected {
     background-color: @accent;
-    text-color: #000000;
+    text-color: @accent-text;
 }
