@@ -78,8 +78,7 @@ return {
       },
     })
 
-    -- Включаем сами серверы. mason-lspconfig (см. mason.lua) следит за тем,
-    -- чтобы бинарники gopls/clangd/pylsp были поставлены через Mason.
-    vim.lsp.enable({ "gopls", "clangd", "pylsp" })
+    -- Сами серверы включает mason-lspconfig через automatic_enable
+    -- (см. mason.lua) — отдельный vim.lsp.enable() здесь не нужен.
   end,
 }

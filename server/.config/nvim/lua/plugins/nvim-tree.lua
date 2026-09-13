@@ -7,6 +7,6 @@ return {
   },
   opts = {},
   keys = {
-    { '<leader>n', '<cmd>NvimTreeToggle<CR>', desc = 'Toggle Neotree'}
+    { '<leader>n', '<cmd>NvimTreeToggle<CR>', desc = 'Toggle file tree'}
   }
 }
