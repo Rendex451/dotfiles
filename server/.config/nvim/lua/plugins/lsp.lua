@@ -1,37 +1,46 @@
 return {
   "neovim/nvim-lspconfig",
+  -- nvim-lspconfig теперь используется не как обёртка с .setup() (это API
+  -- задеприкейчено и будет выпилено в v3.0.0), а просто как поставщик
+  -- дефолтных конфигов под конкретные LSP-серверы (lsp/*.lua внутри плагина),
+  -- которые подхватывает нативный vim.lsp.config. См. :help lspconfig-nvim-0.11
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "hrsh7th/cmp-nvim-lsp",
   },
   config = function()
-    local lspconfig = require("lspconfig")
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-    -- Общие маппинги, вешаются на буфер при подключении LSP-сервера.
-    -- (Аналог того, что раньше в IDE-стиле давал coc.nvim "из коробки".)
-    local on_attach = function(_, bufnr)
-      local opts = { buffer = bufnr, silent = true }
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-      vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-      vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-      vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-      vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-      vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
-      vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-      vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-      vim.keymap.set("n", "<leader>f", function()
-        vim.lsp.buf.format({ async = true })
-      end, opts)
-    end
+    -- Общие маппинги вешаем через LspAttach — срабатывает для любого
+    -- подключившегося сервера, без дублирования одного и того же
+    -- on_attach в конфиге каждого сервера отдельно.
+    vim.api.nvim_create_autocmd("LspAttach", {
+      callback = function(args)
+        local opts = { buffer = args.buf, silent = true }
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+        vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+        vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+        vim.keymap.set("n", "<leader>f", function()
+          vim.lsp.buf.format({ async = true })
+        end, opts)
+      end,
+    })
+
+    -- "*" — общие для всех серверов настройки (тут — capabilities под nvim-cmp)
+    vim.lsp.config("*", {
+      capabilities = capabilities,
+    })
 
     -- Go
-    lspconfig.gopls.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
+    vim.lsp.config("gopls", {
       settings = {
         gopls = {
           usePlaceholders = true,
@@ -41,9 +50,7 @@ return {
     })
 
     -- C/C++ (флаги перенесены из старого coc-settings.json)
-    lspconfig.clangd.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
+    vim.lsp.config("clangd", {
       cmd = {
         "clangd",
         "--background-index",
@@ -57,9 +64,7 @@ return {
     })
 
     -- Python (тот же набор включённых/выключенных плагинов pylsp, что был раньше)
-    lspconfig.pylsp.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
+    vim.lsp.config("pylsp", {
       settings = {
         pylsp = {
           plugins = {
@@ -72,5 +77,9 @@ return {
         },
       },
     })
+
+    -- Включаем сами серверы. mason-lspconfig (см. mason.lua) следит за тем,
+    -- чтобы бинарники gopls/clangd/pylsp были поставлены через Mason.
+    vim.lsp.enable({ "gopls", "clangd", "pylsp" })
   end,
 }
