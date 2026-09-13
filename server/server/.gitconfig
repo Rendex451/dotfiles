@@ -1,0 +1,39 @@
+# user.name / user.email сознательно не заданы здесь — этот файл живёт
+# в публичном репозитории дотфайлов. После stow выполни один раз:
+#   git config --global user.name "..."
+#   git config --global user.email "..."
+# (уйдёт в ~/.gitconfig.local или ~/.config/git/config — куда именно,
+# зависит от версии git; в любом случае этот файл они не перезапишут).
+
+[core]
+    pager = delta
+    editor = nvim
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    line-numbers = true
+    side-by-side = false
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
+[pull]
+    rebase = false
+
+[init]
+    defaultBranch = main
+
+[alias]
+    st = status -sb
+    co = checkout
+    br = branch
+    ci = commit
+    lg = log --oneline --graph --decorate --all
+    last = log -1 HEAD
+    amend = commit --amend --no-edit
