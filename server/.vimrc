@@ -62,6 +62,9 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Тема
 Plug 'morhetz/gruvbox'
+Plug 'axvr/photon.vim', { 'as': 'photon' }
+Plug 'fxn/vim-monochrome'
+Plug 'davidosomething/vim-colors-meh'
 
 call plug#end()
 
@@ -72,10 +75,13 @@ call plug#end()
 " terminal-features RGB, см. .tmux.conf) — сам по себе Vim этого не проверяет.
 set background=dark
 set termguicolors
-colorscheme gruvbox
 
-let g:airline_theme = 'gruvbox'
 
+"colorscheme gruvbox
+"let g:airline_theme = 'gruvbox'
+
+colorscheme meh
+let g:airline_theme = 'deus'
 " ========================================================================== "
 " { LSP: маппинги (вешаются на буфер при подключении сервера) }
 " ========================================================================== "
