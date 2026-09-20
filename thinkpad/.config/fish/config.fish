@@ -5,3 +5,4 @@ end
 function plkstart
     nohup /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 > /dev/null 2>&1 &
 end
+export PATH="$HOME/.local/bin:$PATH"
