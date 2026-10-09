@@ -13,7 +13,7 @@ return {
       },
       sections = {
         lualine_a = { { 'mode', right_padding = 2 } },
-        lualine_b = { 'branch', 'diff', 'diagnostics' },
+        lualine_b = { 'branch', 'diff', { 'diagnostics', sources = { 'vim_lsp' } } },
         lualine_c = { { 'filename', path = 1 } }, -- path = 1 shows relative path
         lualine_x = { 
           {
